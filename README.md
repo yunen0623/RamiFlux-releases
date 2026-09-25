@@ -1,7 +1,7 @@
 # RamiFlux
 
 **Keyboard-first mind maps that turn into boards, tables, Gantt timelines and Notion-style documents.**
-Local-first, end-to-end encrypted sync, plugins and an AI assistant. For Windows 10 and 11.
+Local-first, end-to-end encrypted sync, plugins and an AI assistant. For Windows 10 and 11 and macOS.
 
 <p>
   <a href="https://github.com/yunen0623/RamiFlux-releases/releases/latest"><strong>Download the latest version</strong></a>
@@ -46,7 +46,8 @@ video and audio, plus draw.io diagrams edited without leaving the app.
 
 ![Quick capture, the inbox and the weekly review](media/capture.gif)
 
-`Ctrl+Shift+N` inside the app, or `Ctrl+Alt+Space` from anywhere in Windows, opens quick capture. Type in plain
+`Ctrl+Shift+N` inside the app, or `Ctrl+Alt+Space` from anywhere in Windows (`⌥⇧Space` on a Mac), opens
+quick capture. Type in plain
 language: *by Friday*, *tomorrow 3pm*, *every Monday*, `!!` for priority. Everything lands in the inbox, where
 `M` moves an item under any node of any map. The weekly review gathers what was finished, what is overdue and
 what is coming up across all your maps, ready to paste into an email. A calendar, due-time reminders with snooze
@@ -61,7 +62,7 @@ assistant proposes a task tree with priorities and due dates. Untick what you do
 node or as a new map: one undo takes it all back. It also writes meeting minutes, summarises a node's notes and
 answers questions about your maps using read-only lookups. Bring your own service: the Claude API, any
 OpenAI-compatible endpoint (OpenAI, OpenRouter, Groq, a self-hosted Ollama or LM Studio) or an OAuth 2.0
-gateway. Keys stay in the Windows credential store on your device.
+gateway. Keys stay in your device's credential store (Windows Credential Manager or the macOS Keychain).
 
 ## Also in the box
 
@@ -73,15 +74,29 @@ gateway. Keys stay in the Windows credential store on your device.
   against a documented API.
 - **Backup and export.** Full backups with attachments as a single `.ramiflux` file, Markdown export, and
   import from backups or plain Markdown.
-- **English and Traditional Chinese** interface, chosen automatically from Windows and switchable in Settings.
+- **English and Traditional Chinese** interface, chosen automatically from the system language and switchable
+  in Settings.
 
 ## Install
+
+**Windows**
 
 1. Download `RamiFlux_<version>_x64-setup.exe` from the [latest release](https://github.com/yunen0623/RamiFlux-releases/releases/latest).
 2. Run it. The installer is not yet code-signed, so Windows SmartScreen may show *Windows protected your PC*;
    choose **More info → Run anyway**. It installs for the current user only and needs no administrator rights.
 3. Requirements: 64-bit Windows 10 or 11 and the WebView2 runtime (included with Windows 11; the installer
    fetches it on Windows 10 if it is missing).
+
+**macOS**
+
+1. Download `RamiFlux_<version>_universal.dmg` from the [latest release](https://github.com/yunen0623/RamiFlux-releases/releases/latest) —
+   one download for both Apple silicon and Intel.
+2. Open it and drag **RamiFlux** into **Applications**.
+3. The app is not signed with an Apple Developer ID, so macOS blocks the first launch: double-click RamiFlux
+   and dismiss the warning, then go to **System Settings → Privacy & Security**, scroll down and choose
+   **Open Anyway**. If macOS instead reports the app as damaged, run `xattr -cr /Applications/RamiFlux.app`
+   in Terminal once and open it again. Later updates install through the app and need none of this.
+4. Requirements: macOS 11 Big Sur or later.
 
 RamiFlux checks for updates when it starts and in **Settings → About**. Update packages are signed and the
 signature is verified before anything is installed. An `.msi` is also attached to each release for managed
@@ -91,12 +106,14 @@ The `plugins` release on this page is the plugin store's index; the app download
 
 ## Privacy
 
-Your maps live on your PC in a local SQLite database (`%APPDATA%\app.ramiflux.desktop`) and work fully
-offline. Sync is optional: with an account, maps are encrypted on your device before upload, and the sync
+Your maps live on your computer in a local SQLite database (`%APPDATA%\app.ramiflux.desktop` on Windows,
+`~/Library/Application Support/app.ramiflux.desktop` on a Mac) and work fully offline. Sync is optional: with an account, maps are encrypted on your device before upload, and the sync
 server never sees their contents, titles or attachments. The AI assistant sends only the text you submit, and
 only to the service you configured yourself.
 
 ## Keyboard cheat sheet
+
+On a Mac, read `Ctrl` as `⌘`; the app itself always writes shortcuts the way your platform does.
 
 | Keys | Action |
 | --- | --- |
@@ -108,7 +125,7 @@ only to the service you configured yourself.
 | `N` | Notes and attachments drawer |
 | `Ctrl+Enter` / `Ctrl+Backspace` | Focus on a branch / back out |
 | `Ctrl+K` | Search nodes, maps and commands |
-| `Ctrl+Shift+N` | Quick capture (`Ctrl+Alt+Space` from anywhere in Windows) |
+| `Ctrl+Shift+N` | Quick capture (`Ctrl+Alt+Space` from anywhere in Windows, `⌥⇧Space` on a Mac) |
 | `Ctrl+Alt+I` / `Ctrl+Alt+C` | Inbox / calendar |
 | `Ctrl+Alt+A` | AI assistant |
 | `Ctrl+Shift+L` | Outline panel |
